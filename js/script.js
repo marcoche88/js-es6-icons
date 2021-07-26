@@ -69,7 +69,7 @@ const cardDisplay = document.querySelector("#cards .row");
 
 printIcons(icons, cardDisplay);
 
-// filtrare per tipo le icone
+// filtrare per tipo le icone con la SELECT
 filterSelect.addEventListener("change", () => {
     const selectValue = filterSelect.value;
 
@@ -81,10 +81,31 @@ filterSelect.addEventListener("change", () => {
 
     // filtra per valore della select che è stato selezionato
     const filterIcons = icons.filter((icon) => {
-        return icon.type === selectValue
+        return icon.type === selectValue;
     });
 
     printIcons(filterIcons, cardDisplay);
+});
+
+// BONUS
+// filtrare per INPUT inserito dall'utente
+const filterInput = document.getElementById("filter-input");
+
+filterInput.addEventListener("input", () => {
+    const inputValue = filterInput.value;
+
+    // se è vuoto stampa tutte le icone in pagina
+    if (inputValue === "") {
+        printIcons(icons, cardDisplay);
+        return;
+    }
+
+    // filtra per valore della input che è stato inserito
+    const filterIconsInput = icons.filter((icon) => {
+        return icon.type.includes(inputValue);
+    });
+
+    printIcons(filterIconsInput, cardDisplay);
 });
 
 
