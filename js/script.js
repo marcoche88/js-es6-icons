@@ -13,12 +13,20 @@ in "tempo reale", cioè man mano che l'utente digita.
 */
 
 // funzioni
+
+// stampa le icone sulla pagina
 const printIcons = (arr, element) => {
     let iconTemplate = "";
 
-    arr.forEach((icon) => {
+    // cicla su tutte le icone del file data.js
+    arr.forEach((icon, index) => {
+
+        // layout a cinque colonne, inserisce off-set ogni 5 elementi
+        const offSet = index % 5 === 0 ? "offset-1" : "";
+
+        // costruisce il template da stampare in pagina
         iconTemplate += `
-        <div class="col-2">
+        <div class="col-2 ${offSet}">
             <div class="card">
                 <div class="card-body text-center">
                     <i class="${icon.family} ${icon.prefix}${icon.name} fa-2x ${icon.type}"></i>
@@ -36,6 +44,26 @@ const printIcons = (arr, element) => {
 const cardDisplay = document.querySelector("#cards .row");
 
 printIcons(icons, cardDisplay);
+
+// filtrare per tipo le icone
+const filterSelect = document.getElementById("filter-select");
+
+filterSelect.addEventListener("change", () => {
+    const selectValue = filterSelect.value;
+
+    // se è selezionato all stampa tutte le icone in pagina
+    if (selectValue === "all") {
+        printIcons(icons, cardDisplay);
+        return;
+    }
+
+    // filtra per valore della select che è stato selezionato
+    const filterIcons = icons.filter((icon) => {
+        return icon.type === selectValue
+    });
+
+    printIcons(filterIcons, cardDisplay);
+});
 
 
 
