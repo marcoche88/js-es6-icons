@@ -12,7 +12,7 @@ SUPER INCREDIBLE MEGA BONUS: effettuare la ricerca dalla casella di testo
 in "tempo reale", cioè man mano che l'utente digita.
 */
 
-// funzioni
+// FUNZIONI
 
 // stampa le icone sulla pagina
 const printIcons = (arr, element) => {
@@ -40,14 +40,36 @@ const printIcons = (arr, element) => {
     element.innerHTML = iconTemplate;
 };
 
+// funzione per inserire le option nella pagina
+const printOptions = (arr, element) => {
+    const iconType = [];
+    arr.forEach((icon) => {
+        if (!iconType.includes(icon.type)) {
+            iconType.push(icon.type);
+        }
+    });
+
+    let option = `<option value="all" selected>TUTTE LE ICONE</option>`;
+    iconType.forEach((type) => {
+        option += `<option value="${type}">${type.toUpperCase()}</option>`
+    });
+
+    element.innerHTML = option;
+};
+// fine FUNZIONI
+
+
+// stampa le option in pagina
+const filterSelect = document.getElementById("filter-select");
+
+printOptions(icons, filterSelect);
+
 // stampare in pagina tutte le icone
 const cardDisplay = document.querySelector("#cards .row");
 
 printIcons(icons, cardDisplay);
 
 // filtrare per tipo le icone
-const filterSelect = document.getElementById("filter-select");
-
 filterSelect.addEventListener("change", () => {
     const selectValue = filterSelect.value;
 
@@ -64,6 +86,7 @@ filterSelect.addEventListener("change", () => {
 
     printIcons(filterIcons, cardDisplay);
 });
+
 
 
 
