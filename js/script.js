@@ -21,7 +21,7 @@ const printIcons = (arr, element) => {
         <div class="col-2">
             <div class="card">
                 <div class="card-body text-center">
-                    <i class="${icon.family} ${icon.prefix}${icon.name} fa-2x"></i>
+                    <i class="${icon.family} ${icon.prefix}${icon.name} fa-2x ${icon.type}"></i>
                     <h6>${icon.name.toUpperCase()}</h6>
                 </div>
             </div>

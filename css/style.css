@@ -15,3 +15,20 @@
 h6 {
     font-size: 12px;
 }
+
+.animal {
+    color: blue;
+}
+
+.vegetable {
+    color: orange;
+}
+
+.user {
+    color: purple;
+}
+
+.company {
+    color: green;
+}
+
