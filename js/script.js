@@ -22,11 +22,11 @@ const printIcons = (arr, element) => {
     arr.forEach((icon, index) => {
 
         // layout a cinque colonne, inserisce off-set ogni 5 elementi
-        const offSet = index % 5 === 0 ? "offset-1" : "";
+        const offSet = index % 5 === 0 ? "offset-md-1" : "";
 
         // costruisce il template da stampare in pagina
         iconTemplate += `
-        <div class="col-2 ${offSet}">
+        <div class="col-4 col-md-2 ${offSet}">
             <div class="card">
                 <div class="card-body text-center">
                     <i class="${icon.family} ${icon.prefix}${icon.name} fa-2x ${icon.type}"></i>
