@@ -102,7 +102,7 @@ filterInput.addEventListener("input", () => {
 
     // filtra per valore della input che è stato inserito
     const filterIconsInput = icons.filter((icon) => {
-        return icon.type.includes(inputValue);
+        return icon.name.includes(inputValue.toLowerCase());
     });
 
     printIcons(filterIconsInput, cardDisplay);
